@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -e
+set -x
+
+export DEBIAN_FRONTEND=noninteractive
+apt-get update -y
+apt-get install -y --no-install-recommends ffmpeg
+apt-get clean

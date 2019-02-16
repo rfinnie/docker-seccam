@@ -1,0 +1,22 @@
+#!/bin/sh
+
+set -e
+
+[ -n "$CAM_NAME" ] || exit 1
+[ -n "$CAM_URL" ] || exit 1
+
+mkdir -p "/streams/${CAM_NAME}"
+cd "/streams/${CAM_NAME}"
+#  -t 44100 \
+exec /usr/bin/ffmpeg \
+  -loglevel warning \
+  -i "${CAM_URL}" \
+  -c copy \
+  -map 0 \
+  -f segment \
+  -segment_time 1800 \
+  -segment_format mp4 \
+  -segment_atclocktime 1 \
+  -strftime 1 \
+  -reset_timestamps 1 \
+  "${CAM_NAME}_%Y%m%d-%H%M%S.mp4"
