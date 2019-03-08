@@ -5,6 +5,6 @@ set -x
 
 export DEBIAN_FRONTEND=noninteractive
 apt-get update -y
-apt-get install -y --no-install-recommends ffmpeg daemontools
+apt-get install -y --no-install-recommends ffmpeg
 apt-get clean
-adduser --system --home /srv/streams --group --quiet streams
+adduser --system --home /srv/streams --uid 900 --group --quiet streams

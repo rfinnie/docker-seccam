@@ -6,8 +6,8 @@ set -e
 [ -n "$CAM_NAME" ] || CAM_NAME="camera"
 
 
-cd "/srv/streams"
-exec setuidgid streams ffmpeg \
+cd /srv/streams
+exec ffmpeg \
   -loglevel warning \
   -i "${CAM_URL}" \
   -c copy \
