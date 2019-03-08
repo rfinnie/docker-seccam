@@ -5,9 +5,9 @@ set -e
 [ -n "$CAM_NAME" ] || exit 1
 [ -n "$CAM_URL" ] || exit 1
 
-mkdir -p "/streams/${CAM_NAME}"
-chown streams:nogroup "/streams/${CAM_NAME}"
-cd "/streams/${CAM_NAME}"
+mkdir -p "/srv/streams/${CAM_NAME}"
+chown streams:streams "/srv/streams/${CAM_NAME}"
+cd "/srv/streams/${CAM_NAME}"
 exec setuidgid streams ffmpeg \
   -loglevel warning \
   -i "${CAM_URL}" \
