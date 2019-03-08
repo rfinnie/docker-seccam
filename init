@@ -2,12 +2,11 @@
 
 set -e
 
-[ -n "$CAM_NAME" ] || exit 1
 [ -n "$CAM_URL" ] || exit 1
+[ -n "$CAM_NAME" ] || CAM_NAME="camera"
 
-mkdir -p "/srv/streams/${CAM_NAME}"
-chown streams:streams "/srv/streams/${CAM_NAME}"
-cd "/srv/streams/${CAM_NAME}"
+
+cd "/srv/streams"
 exec setuidgid streams ffmpeg \
   -loglevel warning \
   -i "${CAM_URL}" \
